@@ -1,4 +1,4 @@
-## 初始化一个React 项目
+# 初始化一个React 项目
 ```shell
 
 # 全局安装 create-react-app
@@ -7,7 +7,7 @@ npm i create-react-app -g
 create-react-app myreactapp
 ```
 
-## React组件
+# React组件
 React 首要思想是 使用`组件`(Component)来开发应用 
 组件，就是能完成某个特定功能独立的，可重用的代码
 > 类似于函数 封装代码以便于复用  
@@ -17,8 +17,8 @@ React 首要思想是 使用`组件`(Component)来开发应用
   // React 在解析 jsx 时候 会用到 => React.createElement()
 ```
 
-### jsx
-#### what is jsx ?
+## jsx
+### what is jsx ?
 javascript 的一种语法拓展，在javascript 中写像 html一样的代码(jsx中不仅仅可以用html里面的元素，还可以使用React的组件) 
 > react 组件与html 元素 区别是： 首字母大写
 > react 组件(Mybutton, ClickCounter)  html元素(div, p, span)
@@ -27,7 +27,7 @@ TODO:
 jsx 的实质:
 
 
-#### why have to use jsx?
+### why have to use jsx?
 jsx 把html, js, css 结合一起。具有高耦合性
 ```javascript
   // 一个 ListItem 组件
@@ -42,8 +42,8 @@ jsx 把html, js, css 结合一起。具有高耦合性
 TODO:
 jsx 中事件的代理
 
-## react 的工作方式
-### react 的理念
+# react 的工作方式
+## react 的理念
 打一个比方， React 是一个聪明的建筑工人，而 jQuery 是一个比较傻的建筑工人，
 开发者你就是一个建筑的设计师，如果是 jQuery 这个建筑工人为你工作，你不得不事无
 巨细地告诉jQuery “如何去做”，要告诉他这面墙要拆掉重建，那面墙上要新开 个窗户，
@@ -70,10 +70,10 @@ UI =render( data)
 
 **修改数据 react自动渲染页面** 
 react如何自动渲染页面
-### Virtual DOM(虚拟dom)
+## Virtual DOM(虚拟dom)
 React 利用 Virtual DOM ，让每次渲染都只重新渲染最少的 DOM元素
 
-#### what is dom ?
+### what is dom ?
 DOM 结构化文本的抽象表达形式定于 Web 环境中，这个结构化文本就是 HTML 文本， 
 HTML 中的每个元素都对应 DOM中某个节点，这样，因为 HTML 元素的逐级包含关系， DOM 节点自然就构成了一个树形结构，称为 DOM
 
@@ -81,13 +81,13 @@ HTML 中的每个元素都对应 DOM中某个节点，这样，因为 HTML 元�
 根据 DOM 树渲染出用户看到的界面，当要改变界面内容的时候，就去改变 DOM 树上的
 节点
 
-#### what is virtual dom ? 
+### what is virtual dom ? 
 DOM 树是对 HTML 的抽象，那 Virtual DOM 就是对 DOM 树的抽象
 Virutal DOM 不会触及浏览器的部分，只是存在于 JavaScript 空间的树形结构，每次自上而下渲染
 React 组件时，会对比这一次产生的 Virtual DOM 和上一次渲染的 Virtual DOM ，对比
 就会发现差别，然后修改真正的 DOM 树时就只需要触及差别中的部分就行
 
-#### virtual dom 是如何工作的(how)?
+### virtual dom 是如何工作的(how)?
 
 **简单案例：**
 ```javascript
@@ -109,7 +109,7 @@ document.getElementById('clickCount').innerHTML = '1'
 组件更新后，React会生成`Virtual DOM`。然后React会拿刚生成的Virtual DOM去对比旧的Virtual DOM，对比两者的不同。根据不同修改DOM 树，这样的改动是最小的。
 
 这个找不同的过程就是，Reconciliation(调和)
-### how is Reconciliation？
+## how is Reconciliation？
 React 从根节点递归向下比较，，每个节点都可以看作一个这个节点以下部分子树的根节点
 
 首先检查两个的根节点的类型是否相同
@@ -170,10 +170,11 @@ React不知道如何去更新DOM树，逻辑还在React 组件中。React 能做
 在处理完根节点的对比之后， React 的算法会对根节点的每个子节点重复一样的动作，
 这时候每个子节点就成为它所覆盖部分的根节点，处理方式和它的父节点完全一样
 
-
 ### key的用法
 同层比较子组件的时候，子组件唯一标识就是它的位置。
+
 所以给每一个子组件添加 key属性 后，就能更好的对比。
+
 
 
 
