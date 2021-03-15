@@ -19,7 +19,7 @@ class Tree {
     } 
     
     // 2. root  不为空
-    if (this.root.value < value) {
+    if (this.root) {
       this.insertNode(null, this.root, value)
     }
 
@@ -28,6 +28,7 @@ class Tree {
   // 把节点插入树中
   insertNode(previousNode, currentNode, value) {
     const newNode = new Node(value)
+
     if (!currentNode) {
       if (previousNode.value > value) {
         previousNode.left = newNode
@@ -49,21 +50,13 @@ class Tree {
     if (!node) {
       return
     }
+
+    // 中序遍历 输出的数字是正序的
+    // 后序遍历 输出的数字是逆序的
+    this.traverse(node.right)
     console.log(node.value)
     this.traverse(node.left)
-    this.traverse(node.right)
   }
-
-  lastTraverse(node) {
-    if (!node) {
-      return
-    }
-
-    console.log(node.value)
-    this.lastTraverse(node)
-    this.lastTraverse(node.left)    
-  }
-
 
 }
 
@@ -72,6 +65,7 @@ const tree1 = new Tree()
 tree1.add(1)
 tree1.add(-1)
 tree1.add(2)
+tree1.add(1.5)
 tree1.add(3)
 tree1.add(3.5)
 tree1.add(4)
@@ -79,7 +73,6 @@ tree1.add(4.5)
 
 // console.dir(tree1, {depth: 100});
 tree1.traverse(tree1.root)
-tree1.lastTraverse(tree1.root)
 
 
 
