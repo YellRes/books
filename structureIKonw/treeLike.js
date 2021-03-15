@@ -58,21 +58,34 @@ class Tree {
     this.traverse(node.left)
   }
 
+  // 找值
+  findNumber(value, node) {
+    if (!node ) {
+      return false
+    }
+
+    if (node.value === value) {
+      return true
+    }
+
+    let leftRes = this.findNumber(value, node.left)
+    let rightRes = this.findNumber(value, node.right)
+    // console.log('ds');
+    return leftRes || rightRes
+  }
+
 }
 
 const tree1 = new Tree()
 
-tree1.add(1)
-tree1.add(-1)
-tree1.add(2)
-tree1.add(1.5)
-tree1.add(3)
-tree1.add(3.5)
-tree1.add(4)
-tree1.add(4.5)
+for (let i = 0; i < 1e3; i++) {
+  tree1.add(i)
+}
+
+console.log(tree1.findNumber(1e3 - 1, tree1.root))
 
 // console.dir(tree1, {depth: 100});
-tree1.traverse(tree1.root)
+// tree1.traverse(tree1.root)
 
 
 
