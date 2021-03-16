@@ -68,7 +68,14 @@ class LinkList {
     return false
   }
 
-  getElementAt(index) {}
+  getElementAt(index) {
+    let current = this.head
+    while(index) {
+      current = current.next
+      index--
+    }
+    return current
+  }
 
   remove(value) {
     if (!this.isEmpty()) {

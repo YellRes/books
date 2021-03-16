@@ -14,33 +14,55 @@ class CircularLinkedList extends LinkList {
       if (this.head === null) {
         this.head = node
         // add: 循环指向自身
-        node.next = node
+        this.head.next = node
       } else {
-        node.next = this.head.next
+        node.next = this.head
         this.head = node
+        let lastNode = this.getElementAt(this.count)
+        lastNode.next = this.head
       }
-    } else if (index === this.count - 1) {
-      let current = this.head
-      while(index) {
-        current = current.next
-        index--
-      }
-
-      node.next = this.head
+    } else  {
+      let current = this.getElementAt(index)
+      node.next = current.next
       current.next = node
-    } else {
-      let current = this.head
-      
     }
+
+    this.count++
   }
 
   removeAt(index) {
+    if (!this.isEffectIndex()) return false
 
+
+    if (index === 0) {
+      if (this.count === 1) {
+        this.head = null
+      } else {
+        let last = this.getElementAt(this.count - 1)
+        this.head = this.head.next
+        last.next = this.head
+      }
+    } else {
+      let current = this.getElementAt(index)
+      current.next = current.next.next
+    }
+
+    this.count--
   }
+
 }
 
 const circularLL = new CircularLinkedList()
 
+circularLL.insert(1, 0)
+circularLL.insert(2, 0)
+circularLL.insert(3, 0)
+
+
+console.dir(circularLL, {depth: 10})
+
+circularLL.removeAt(0)
+console.dir(circularLL, {depth: 10})
 
 
 

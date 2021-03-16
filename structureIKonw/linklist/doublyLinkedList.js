@@ -1,3 +1,29 @@
+// 双向链表
+
+// 1. 节点结构变化 Node
+// 1.1 多了一个 prev 指向了前一个的节点
+
+// 2. 双向链表的结构
+// 2.1  指定位置插入
+// 2.1.1 一般情况  找到位置节点 (currentnode) 
+// node.next = currentnode.next  node.prev = currentnode
+// current.next.prev = node
+// currentnode.next = node 
+
+// 2.1.2 index = 0
+// 2.1.2.1 this.head = null
+// this.head = node  this.tail = node
+
+// 2.1.2.2 this.head != null
+// node.next = this.head  this.head.prev = node
+// this.head = node  
+
+// 2.1.2.3 index = this.size
+// node.next = null   node.prev = this.tail
+// this.tail = node 
+
+
+
 class Node {
   constructor(element) {
     this.element = element;
@@ -132,3 +158,7 @@ dblinkL.removeAt(0)
 
 
 console.dir(dblinkL, {depth: 8});
+
+export {
+  DoublyLinkedList
+}
