@@ -30,7 +30,7 @@ class CircularLinkedList extends LinkList {
       current.next = node
     } else {
       let current = this.head
-      w
+      
     }
   }
 
